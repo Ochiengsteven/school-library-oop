@@ -60,15 +60,15 @@ Before running this project, make sure you have the following prerequisites inst
 1. Clone this repository to your desired folder:
 
    ```sh
-   git clone https://github.com/Ochiengsteven/school-library.git
+   git clone https://github.com/Ochiengsteven/school-library-oop.git
 
 2. Navigate to the project directory:
 
     ```sh
-    cd school-library
+    cd school-library-oop
 3. Run the program:
     ```sh
-    ruby test.rb
+    ruby person.rb
 <!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
