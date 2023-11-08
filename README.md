@@ -74,8 +74,9 @@ Before running this project, make sure you have the following prerequisites inst
 ## 👥 Authors <a name="authors"></a>
 👤 Ochieng Steven
 
-GitHub: @Ochiengsteven<br>
-Twitter: @ochiengotieno63<br>
+- GitHub: [@Ochiengsteven](https://github.com/Ochiengsteven)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/steven-ochieng-a43125179/)
+- Twitter: [@ochiengotieno63](https://twitter.com/legringo_madd)
 
 ## 🔭 Future Features <a name="future-features"></a>
 

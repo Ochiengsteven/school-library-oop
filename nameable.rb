@@ -1,4 +1,4 @@
-require './person'
+require_relative 'person'
 
 class Nameable
   def correct_name
@@ -7,6 +7,8 @@ class Nameable
 end
 
 class Decorator < Nameable
+  attr_accessor :nameable
+
   def initialize(nameable)
     super()
     @nameable = nameable
