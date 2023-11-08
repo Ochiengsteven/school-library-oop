@@ -21,6 +21,3 @@ class Person
     age >= 18
   end
 end
-
-student1 = Person.new(20, 'Steve', parent_permission: false)
-puts student1.can_use_service
