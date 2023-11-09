@@ -2,25 +2,21 @@ require_relative 'person'
 require_relative 'nameable'
 require_relative 'classroom'
 require_relative 'student'
+require_relative 'rental'
+require_relative 'book'
+require_relative 'teacher'
 
 student1 = Student.new(21, 'Jack')
-student3 = Student.new(16, 'Mary')
 
-class1 = Classroom.new('Math')
-class1.students
+book_sinking = Book.new('Jaba', 'Sinking')
+book_river = Book.new('The River and The Source', 'Ngugi')
 
-student1.classroom
-class1.add_student(student1)
-student1.classroom
-student1.classroom.label
-class1.students
+rental1 = Rental.new('2023-12-22', student1, book_sinking)
+rental2 = Rental.new('2023-10-18', student1, book_river)
 
-student3.classroom
-class1.add_student(student3)
-student3.classroom
-student3.classroom.label
-class1.students
+puts rental1.book.title
+puts rental2.book.title
 
-puts class1.students.count
-puts class1.students.first.name
-puts class1.students.last.age
+puts student1.rentals.count
+puts(student1.rentals.map(&:date))
+puts(student1.rentals.map { |rental| rental.person.name })
