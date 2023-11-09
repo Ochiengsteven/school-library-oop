@@ -1,9 +1,10 @@
 require 'securerandom'
 require_relative 'nameable'
+require_relative 'rental'
 
 class Person < Nameable
   attr_accessor :name, :age, :parent_permission, :nameable
-  attr_reader :id
+  attr_reader :id, :rentals
 
   def initialize(age, name = 'Unknown', parent_permission: true, nameable: nil)
     super()
@@ -12,6 +13,7 @@ class Person < Nameable
     @id = SecureRandom.uuid
     @parent_permission = parent_permission
     @nameable = nameable
+    @rentals = []
   end
 
   def can_use_service?
@@ -26,5 +28,9 @@ class Person < Nameable
 
   def of_age?
     age >= 18
+  end
+
+  def add_rental(rental)
+    @rentals << rental
   end
 end
