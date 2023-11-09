@@ -1,4 +1,4 @@
-require 'securerandom'
+# require 'securerandom'
 require_relative 'nameable'
 require_relative 'rental'
 
@@ -10,7 +10,7 @@ class Person < Nameable
     super()
     @name = name
     @age = age
-    @id = SecureRandom.uuid
+    @id = name # SecureRandom.uuid
     @parent_permission = parent_permission
     @nameable = nameable
     @rentals = []
