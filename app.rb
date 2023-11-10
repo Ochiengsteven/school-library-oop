@@ -6,9 +6,9 @@ require_relative 'teacher'
 
 class App
   def initialize
-    @people = [] # Array to store people (students/teachers)
-    @books = [] # Array to store books
-    @rentals = [] # Array to store rentals
+    @people = []
+    @books = []
+    @rentals = []
   end
 
   def list_all_books
@@ -64,26 +64,39 @@ class App
 
   def create_rental
     puts 'Creating a new rental...'
-    puts 'Enter person ID:'
-    person_id = gets.chomp
-    person = @people.find { |p| p.id == person_id }
-    if person.nil?
-      puts 'Person not found!'
+
+    puts 'Select the book from the following list by number:'
+    @books.each_with_index { |book, index| puts "#{index + 1}. Title: #{book.title}, Author #{book.author}" }
+    book_number = gets.chomp.to_i
+
+    if book_number < 1 || book_number > @books.length
+      puts 'Invalid book number!'
       return
     end
 
-    puts 'Enter book title:'
-    book_title = gets.chomp
-    book = @books.find { |b| b.title == book_title }
-    if book.nil?
-      puts 'Book not found!'
+    selected_book = @books[book_number - 1]
+
+    puts 'Select a person from the following list by number:'
+    @people.each_with_index do |person, index|
+      role = person.is_a?(Student) ? '[student]' : '[teacher]'
+      puts "#{index + 1}. #{role} #{person.name}, Age: #{person.age}"
+    end
+
+    person_number = gets.chomp.to_i
+
+    if person_number < 1 || person_number > @people.length
+      puts 'Invalid person number!'
       return
     end
+
+    selected_person = @people[person_number - 1]
 
     puts 'Enter date (YYYY-MM-DD):'
     date = gets.chomp
 
-    @rentals << Rental.new(date, person, book)
+    @rentals << Rental.new(date, selected_person, selected_book)
+
+    puts 'Rental created successfully!'
   end
 
   def list_all_rentals_for_person(person_id)
