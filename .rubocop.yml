@@ -5,6 +5,7 @@ AllCops:
     - "Rakefile"
     - "node_modules/**/*"
     - "app.rb"
+    - "person.rb"
 
   DisplayCopNames: true
 
