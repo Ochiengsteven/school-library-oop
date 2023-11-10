@@ -54,39 +54,45 @@ class App
 
   def create_rental
     puts 'Creating a new rental...'
-    puts 'Enter person name:'
-    person_name = gets.chomp
-
-    person = @people.find { |p| p.name == person_name }
+    puts 'Enter person ID:'
+    person_id = gets.chomp
+    person = @people.find { |p| p.id == person_id }
     if person.nil?
       puts 'Person not found!'
       return
     end
-
+  
     puts 'Enter book title:'
     book_title = gets.chomp
-
     book = @books.find { |b| b.title == book_title }
     if book.nil?
       puts 'Book not found!'
       return
     end
-
+  
     puts 'Enter date (YYYY-MM-DD):'
     date = gets.chomp
-
+  
     @rentals << Rental.new(date, person, book)
   end
 
   def list_all_rentals_for_person(person_id)
-    person = @people.find { |p| p.id == person_id }
+    puts "All Person IDs: #{@people.map(&:id)}"
+    person = @people.find { |p| p.id == person_id.to_s }
+    puts "Entered person ID: #{person_id}"
+    
     if person.nil?
-      puts 'Person not found!'
+      puts "Person not found!"
     else
       puts "Rentals for #{person.name}:"
-      rentals = @rentals.select { |rental| rental.person == person }
-      rentals.each do |rental|
-        puts "Date: #{rental.date}, Book: #{rental.book.title}"
+      rentals = @rentals.select { |rental| rental.person.id == person.id }
+      
+      if rentals.empty?
+        puts "No rentals found for #{person.name}."
+      else
+        rentals.each do |rental|
+          puts "Date: #{rental.date}, Book: #{rental.book.title}"
+        end
       end
     end
   end
@@ -142,6 +148,5 @@ class App
   end
 end
 
-# Create an instance of the app and run it
 app = App.new
 app.main
