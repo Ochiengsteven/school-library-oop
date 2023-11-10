@@ -77,7 +77,7 @@ class App
   end
 
   def list_all_rentals_for_person(person_id)
-    puts "All Person IDs: #{@people.map(&:id)}"
+    puts "All IDs: #{@people.map(&:id)}"
     person = @people.find { |p| p.id == person_id.to_s }
     puts "Entered person ID: #{person_id}"
     
