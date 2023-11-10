@@ -118,46 +118,6 @@ class App
     end
   end
 
-  def main
-    loop do
-      puts 'Welcome to the Library App!'
-      puts 'Choose an option:'
-      puts '1. List all books'
-      puts '2. List all people'
-      puts '3. Create a person'
-      puts '4. Create a book'
-      puts '5. Create a rental'
-      puts '6. List all rentals for a given person ID'
-      puts '7. Quit'
-
-      choice = gets.chomp.to_i
-
-      case choice
-      when 1
-        list_all_books
-      when 2
-        list_all_people
-      when 3
-        role = role_from_user
-        create_person(role)
-      when 4
-        create_book
-      when 5
-        create_rental
-      when 6
-        puts 'Enter the person ID:'
-        person_id = gets.chomp.to_i
-        list_all_rentals_for_person(person_id)
-      when 7
-        break
-      else
-        puts 'Invalid option. Please try again.'
-      end
-    end
-  end
-
-  private
-
   def role_from_user
     loop do
       puts 'Enter the role (student/teacher):'
@@ -168,6 +128,3 @@ class App
     end
   end
 end
-
-app = App.new
-app.main
