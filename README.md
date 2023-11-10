@@ -68,7 +68,7 @@ Before running this project, make sure you have the following prerequisites inst
     cd school-library-oop
 3. Run the program:
     ```sh
-    ruby test.rb
+    ruby main.rb
 <!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
