@@ -31,22 +31,32 @@ class App
     name = gets.chomp
     puts 'Enter age:'
     age = gets.chomp.to_i
+  
     case role
     when 'student'
-      person = Student.new(age, name)
+      if age < 18
+        puts 'Does the student have parent permission? (yes/no):'
+        permission_input = gets.chomp.downcase
+        parent_permission = permission_input == 'yes'
+      else
+        parent_permission = true
+      end
+  
+      person = Student.new(age, name, parent_permission: parent_permission)
     when 'teacher'
       puts 'Enter specialization:'
       specialization = gets.chomp
       person = Teacher.new(specialization, name: name, age: age)
     end
+  
     @people << person
   end
 
   def create_book
     puts 'Creating a new book...'
-    puts 'Enter title:'
+    puts 'Enter Author:'
     title = gets.chomp
-    puts 'Enter author:'
+    puts 'Enter Title:'
     author = gets.chomp
     book = Book.new(author, title)
     @books << book
@@ -61,7 +71,7 @@ class App
       puts 'Person not found!'
       return
     end
-  
+
     puts 'Enter book title:'
     book_title = gets.chomp
     book = @books.find { |b| b.title == book_title }
@@ -69,24 +79,22 @@ class App
       puts 'Book not found!'
       return
     end
-  
+
     puts 'Enter date (YYYY-MM-DD):'
     date = gets.chomp
-  
+
     @rentals << Rental.new(date, person, book)
   end
 
   def list_all_rentals_for_person(person_id)
-    puts "All IDs: #{@people.map(&:id)}"
     person = @people.find { |p| p.id == person_id.to_s }
-    puts "Entered person ID: #{person_id}"
-    
+
     if person.nil?
-      puts "Person not found!"
+      puts 'Person not found!'
     else
       puts "Rentals for #{person.name}:"
       rentals = @rentals.select { |rental| rental.person.id == person.id }
-      
+
       if rentals.empty?
         puts "No rentals found for #{person.name}."
       else
