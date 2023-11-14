@@ -127,4 +127,15 @@ class App
       puts 'Invalid role. Please enter student or teacher.'
     end
   end
+
+  def get_person_id
+    loop do
+      puts 'Enter the person ID:'
+      person_id = gets.chomp
+  
+      return person_id if @people.any? { |p| p.id == person_id }
+  
+      puts 'Person not found. Please enter a valid ID.'
+    end
+  end
 end
