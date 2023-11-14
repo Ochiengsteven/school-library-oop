@@ -43,5 +43,4 @@ def main
   end
 end
 
-# 'main' method should be invoked at the end of the main.rb file.
 main
